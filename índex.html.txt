@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EnglishUp — Aprenda Inglês do Zero</title>
+  <meta name="description" content="Aulas curtas, conversação com IA e treino de pronúncia. Aprenda inglês no seu ritmo." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#121b2f;
+      --text:#e8eefc;
+      --muted:#a9b4d6;
+      --brand:#6ea8ff;
+      --brand2:#7cf3c6;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 16px 50px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 700px at 10% 0%, rgba(110,168,255,.18), transparent 55%),
+                  radial-gradient(900px 600px at 80% 10%, rgba(124,243,198,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 16px; border:1px solid var(--line);
+      background:rgba(18,27,47,.55); backdrop-filter: blur(10px);
+      border-radius:999px;
+    }
+    .logo{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;
+    }
+    .mark{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 30px rgba(110,168,255,.25);
+      display:grid; place-items:center; color:#0b1220; font-weight:900;
+    }
+    .navlinks{display:flex; gap:14px; color:var(--muted); font-weight:600}
+    .navlinks a{padding:8px 10px; border-radius:999px}
+    .navlinks a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px; border-radius:999px; font-weight:800;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      cursor:pointer;
+    }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#081022;
+      box-shadow: 0 14px 40px rgba(110,168,255,.20);
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .hero{
+      display:grid; grid-template-columns: 1.25fr .9fr; gap:26px;
+      align-items:center; margin-top:26px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(18,27,47,.55);
+      color:var(--muted); font-weight:700;
+      width:fit-content;
+    }
+    h1{
+      margin:14px 0 10px; font-size:46px; line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .lead{color:var(--muted); font-size:18px; margin:0 0 18px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .small{color:var(--muted); font-size:14px}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .phone{
+      position:relative;
+      overflow:hidden;
+      min-height:420px;
+    }
+    .phone::before{
+      content:"";
+      position:absolute; inset:-80px -80px auto auto;
+      width:260px; height:260px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,243,198,.35), transparent 60%);
+      transform: rotate(12deg);
+    }
+    .screen{
+      border-radius: 26px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(7,12,25,.65);
+      padding:16px;
+      min-height:420px;
+    }
+    .screen .row{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px}
+    .pill{
+      padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800;
+      border:1px solid var(--line); color:var(--muted);
+    }
+    .lesson{
+      border:1px solid var(--line);
+      background:rgba(18,27,47,.55);
+      border-radius:16px;
+      padding:14px;
+      display:grid;
+      gap:10px;
+    }
+    .lesson strong{font-size:14px}
+    .progress{
+      height:10px; border-radius:999px; background: rgba(255,255,255,.08);
+      overflow:hidden; border:1px solid rgba(255,255,255,.10);
+    }
+    .bar{height:100%; width:64%; background: linear-gradient(90deg, var(--brand), var(--brand2))}
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:18px}
+    .feat h3{margin:0 0 6px; font-size:16px}
+    .feat p{margin:0; color:var(--muted); font-size:14px}
+    .icon{
+      width:38px; height:38px; border-radius:14px;
+      background:rgba(110,168,255,.14);
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.10);
+      margin-bottom:10px;
+      font-weight:900;
+    }
+    section{margin-top:26px}
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    .faq details{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(18,27,47,.40);
+      padding:14px 14px;
+    }
+    summary{cursor:pointer; font-weight:800}
+    details p{color:var(--muted); margin:10px 0 0}
+    footer{margin:28px 0 10px; color:var(--muted); font-size:13px; text-align:center}
+    .sep{height:1px; background:var(--line); margin:18px 0}
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr; }
+      h1{font-size:38px}
+      .grid3{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <div class="logo">
+        <div class="mark">E</div>
+        <div>EnglishUp</div>
+      </div>
+      <nav class="navlinks">
+        <a href="#recursos">Recursos</a>
+        <a href="#planos">Plano grátis</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn primary" href="#começar">Começar agora</a>
+    </header>
+
+    <main class="hero">
+      <div>
+        <div class="badge">⚡ Aulas rápidas • 🎧 Escuta • 🗣️ Fala • ✅ Feedback</div>
+        <h1>Aprenda inglês de um jeito simples e prático.</h1>
+        <p class="lead">
+          Treine vocabulário, pronúncia e conversação com lições curtas.
+          Ideal para iniciantes e para quem quer destravar a fala.
+        </p>
+
+        <div class="cta" id="começar">
+          <button class="btn primary" id="btnLead">Quero testar grátis</button>
+          <a class="btn" href="#recursos">Ver recursos</a>
+          <span class="small">Sem cartão • 2 minutos para começar</span>
+        </div>
+
+        <div class="sep"></div>
+
+        <div class="two">
+          <div class="card">
+            <strong>🎯 Objetivo diário</strong>
+            <p class="small">Defina 5, 10 ou 15 min/dia e acompanhe seu progresso.</p>
+          </div>
+          <div class="card">
+            <strong>🧠 Repetição espaçada</strong>
+            <p class="small">O app revisa palavras no momento certo para você não esquecer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card phone" aria-label="Prévia do aplicativo">
+        <div class="screen">
+          <div class="row">
+            <div class="pill">Plano grátis</div>
+            <div class="pill">Streak: <span id="streak">3</span>🔥</div>
+          </div>
+
+          <div class="lesson">
+            <strong>Lição de hoje</strong>
+            <div class="small">Tema: Apresentações</div>
+            <div class="progress" aria-label="Progresso da lição">
+              <div class="bar"></div>
+            </div>
+            <div class="small">
+              Frase: <b>“Nice to meet you.”</b><br/>
+              Tradução: “Prazer em conhecer você.”
+            </div>
+            <button class="btn" id="btnPlay">▶️ Ouvir pronúncia</button>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="lesson">
+            <strong>Conversação com IA</strong>
+            <div class="small">Simule um diálogo de viagem, trabalho ou cotidiano.</div>
+            <button class="btn primary" id="btnChat">Abrir chat</button>
+          </div>
+
+          <p class="small" style="margin:12px 2px 0;color:var(--muted)">
+            *Prévia ilustrativa. Você pode adaptar para seu app real.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <section id="recursos">
+      <div class="card">
+        <h2 style="margin:0 0 10px">Recursos principais</h2>
+        <p class="small" style="margin:0 0 14px">
+          Um caminho completo: aprender, praticar e medir evolução.
+        </p>
+
+        <div class="grid3">
+          <div class="feat">
+            <div class="icon">🗣️</div>
+            <h3>Fala e pronúncia</h3>
+            <p>Treinos guiados com feedback e dicas para brasileiros.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">🎧</div>
+            <h3>Listening real</h3>
+            <p>Áudios curtos com sotaques e velocidade progressiva.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">📚</div>
+            <h3>Vocabulário útil</h3>
+            <p>Palavras do dia a dia com revisão inteligente.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">✅</div>
+            <h3>Exercícios rápidos</h3>
+            <p>Complete frases, escolha respostas e memorize com contextos.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">📈</div>
+            <h3>Progresso claro</h3>
+            <p>Metas, streak, nível e histórico de desempenho.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">🌙</div>
+            <h3>Modo leve</h3>
+            <p>Interface simples, sem distração: foco em aprender.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos">
+      <div class="two">
+        <div class="card">
+          <h2 style="margin:0 0 10px">Plano grátis</h2>
+          <ul style="margin:0; padding-left:18px; color:var(--muted)">
+            <li>1 lição/dia</li>
+            <li>Revisão de vocabulário</li>
+            <li>Treino de frases</li>
+            <li>Relatório semanal</li>
+          </ul>
+          <div style="height:12px"></div>
+          <button class="btn primary" id="btnStart2">Começar no grátis</button>
+        </div>
+
+        <div class="card">
+          <h2 style="margin:0 0 10px">Contato</h2>
+          <p class="small" style="margin:0 0 10px">
+            Quer que eu personalize esse site com seu nome, cores e texto?
+            Preencha abaixo (não envia de verdade — é só exemplo).
+          </p>
+
+          <form onsubmit="return false;">
+            <label class="small">Nome</label><br/>
+            <input style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text)"
+                   placeholder="Seu nome" /><br/><br/>
+            <label class="small">WhatsApp/Email</label><br/>
+            <input style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text)"
+                   placeholder="(00) 00000-0000 ou email" /><br/><br/>
+            <button class="btn" id="btnForm">Enviar</button>
+            <span class="small" id="formMsg" style="margin-left:10px"></span>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="card">
+        <h2 style="margin:0 0 12px">FAQ</h2>
+
+        <details>
+          <summary>Esse site funciona no celular?</summary>
+          <p>Sim — ele é responsivo e se adapta para telas pequenas.</p>
+        </details>
+        <div style="height:10px"></div>
+
+        <details>
+          <summary>Posso publicar grátis?</summary>
+          <p>Sim. Você pode publicar em serviços como Netlify (arrastar e soltar) ou GitHub Pages.</p>
+        </details>
+        <div style="height:10px"></div>
+
+        <details>
+          <summary>Você pode deixar com meu nome e minha marca?</summary>
+          <p>Sim. Se você me disser o nome do seu projeto e o estilo (cores), eu devolvo o código já personalizado.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> EnglishUp • Feito para você editar e publicar.
+    </footer>
+  </div>
+
+  <script>
+    // Ano automático
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Interações simples
+    const streakEl = document.getElementById("streak");
+    const bumpStreak = () => {
+      const n = parseInt(streakEl.textContent, 10);
+      streakEl.textContent = String(n + 1);
+    };
+
+    document.getElementById("btnLead").addEventListener("click", () => {
+      bumpStreak();
+      alert("🔥 Pronto! Agora personalize o site e publique grátis (veja as instruções abaixo).");
+    });
+
+    document.getElementById("btnPlay").addEventListener("click", () => {
+      alert("🔊 Aqui você conectaria um áudio/voz (Text-to-Speech) no app real.");
+    });
+
+    document.getElementById("btnChat").addEventListener("click", () => {
+      alert("💬 Aqui você conectaria o chat com IA no app real.");
+    });
+
+    document.getElementById("btnStart2").addEventListener("click", () => {
+      bumpStreak();
+      window.location.hash = "#começar";
+    });
+
+    document.getElementById("btnForm").addEventListener("click", () => {
+      document.getElementById("formMsg").textContent = "Enviado! (simulação)";
+    });
+  </script>
+</body>
+</html>
