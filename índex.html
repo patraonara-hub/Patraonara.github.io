@@ -1,651 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Patraonara — Inscrição R$ 18/mês</title>
-  <meta name="description" content="Entre para a Patraonara por R$ 18/mês. Conteúdos e benefícios exclusivos. Cancelamento a qualquer momento." />
-  <style>
-    :root{
-      --bg:#0b0f19;
-      --card:#111831;
-      --card2:#0f162d;
-      --text:#e9eefc;
-      --muted:#aab7e6;
-      --brand:#7c5cff;
-      --brand2:#2ee59d;
-      --danger:#ff5c7a;
-      --line:rgba(255,255,255,.10);
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius:18px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(1000px 600px at 20% -10%, rgba(124,92,255,.35), transparent 65%),
-        radial-gradient(900px 600px at 100% 20%, rgba(46,229,157,.20), transparent 60%),
-        radial-gradient(900px 600px at 30% 120%, rgba(255,92,122,.18), transparent 60%),
-        var(--bg);
-      overflow-x:hidden;
-    }
-    a{color:inherit}
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 70px;}
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; margin-bottom:18px;
-    }
-    .logo{
-      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;
-    }
-    .pill{
-      font-size:12px; color:rgba(255,255,255,.86);
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      padding:6px 10px; border-radius:999px;
-      backdrop-filter: blur(8px);
-    }
-    .cta-mini{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
-    .btn{
-      border:0; cursor:pointer;
-      padding:12px 14px; border-radius:12px;
-      font-weight:700; letter-spacing:.2px;
-      transition: transform .15s ease, filter .15s ease, background .15s ease;
-      display:inline-flex; align-items:center; gap:10px;
-      text-decoration:none;
-      user-select:none;
-    }
-    .btn:hover{transform: translateY(-1px); filter: brightness(1.03);}
-    .btn:active{transform: translateY(0px); filter: brightness(.98);}
-    .btn-primary{
-      background: linear-gradient(135deg, var(--brand), #4b8bff);
-      color:white;
-      box-shadow: 0 18px 30px rgba(124,92,255,.25);
-    }
-    .btn-ghost{
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--line);
-      color: rgba(255,255,255,.92);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patraonara – Assinatura</title>
 
-    /* HERO */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:stretch;
-      margin-top:12px;
-    }
-    @media (max-width: 900px){
-      .hero{grid-template-columns: 1fr; }
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .card-inner{padding:22px;}
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      background: rgba(46,229,157,.14);
-      border: 1px solid rgba(46,229,157,.25);
-      color: rgba(240,255,249,.95);
-      padding:8px 12px;
-      border-radius: 999px;
-      font-weight:800;
-      font-size: 12px;
-      letter-spacing:.3px;
-      width:fit-content;
-    }
-    .title{
-      font-size: clamp(28px, 3.6vw, 44px);
-      line-height: 1.07;
-      margin:12px 0 10px;
-      letter-spacing: -0.8px;
-      font-weight: 900;
-    }
-    .subtitle{
-      color:var(--muted);
-      font-size: 15.5px;
-      line-height:1.6;
-      margin: 0 0 16px;
-      max-width: 58ch;
-    }
-    .hero-actions{
-      display:flex; gap:12px; flex-wrap:wrap;
-      margin-top: 14px;
-    }
-    .price{
-      display:flex; align-items:baseline; gap:10px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(17,24,49,.55);
-      margin-top: 14px;
-    }
-    .price strong{
-      font-size: 34px;
-      letter-spacing:-.8px;
-    }
-    .price span{
-      color: var(--muted);
-      font-weight:700;
-    }
-    .fine{
-      margin-top: 10px;
-      color: rgba(255,255,255,.70);
-      font-size: 12.5px;
-      line-height: 1.4;
-    }
+<style>
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f5f7fb;
+  color:#333;
+}
 
-    /* Mascote */
-    .mascot{
-      display:flex; align-items:stretch; justify-content:center;
-      min-height: 360px;
-      background:
-        radial-gradient(500px 260px at 50% 40%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(420px 240px at 70% 70%, rgba(46,229,157,.16), transparent 55%),
-        rgba(15,22,45,.55);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .mascot .pad{padding:22px; width:100%; display:flex; flex-direction:column; gap:14px;}
-    .mascot-top{display:flex; justify-content:space-between; align-items:center; gap:10px;}
-    .mascot-top .tag{
-      font-size:12px; font-weight:800; letter-spacing:.3px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--line);
-      padding:7px 10px; border-radius:999px;
-      color: rgba(255,255,255,.88);
-      width:fit-content;
-    }
-    .bubble{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      border-radius: 16px;
-      padding: 12px 12px;
-      color: rgba(255,255,255,.85);
-      font-size: 13.5px;
-      line-height: 1.5;
-    }
-    .ferret{
-      margin-top:auto;
-      display:flex; align-items:center; justify-content:center;
-      height: 240px;
-      position:relative;
-      filter: drop-shadow(0 18px 24px rgba(0,0,0,.45));
-    }
+/* Banner */
+header{
+  background:linear-gradient(135deg,#6a5cff,#9b8cff);
+  color:white;
+  padding:40px 20px;
+  text-align:center;
+}
 
-    /* Furão em SVG (branquinho fofo) */
-    svg{max-width: 320px; width: 100%; height: auto;}
-    .spark{
-      position:absolute; inset:auto;
-      width:10px; height:10px; border-radius:999px;
-      background: rgba(255,255,255,.9);
-      opacity:.55;
-      filter: blur(.2px);
-      animation: floaty 3.6s ease-in-out infinite;
-    }
-    .spark.s1{left:18%; top:24%; animation-delay:.2s; opacity:.35}
-    .spark.s2{left:72%; top:20%; animation-delay:1.1s; opacity:.25}
-    .spark.s3{left:84%; top:58%; animation-delay:.7s; opacity:.22}
-    .spark.s4{left:30%; top:72%; animation-delay:1.6s; opacity:.18}
-    @keyframes floaty{
-      0%,100%{transform: translateY(0px)}
-      50%{transform: translateY(-10px)}
-    }
+/* Mascote */
+.mascote{
+  font-size:80px;
+  margin-bottom:10px;
+}
 
-    /* Seções */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-      margin-top: 16px;
-    }
-    @media (max-width: 900px){ .grid{grid-template-columns:1fr;} }
-    .feat{
-      padding:16px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: rgba(17,24,49,.45);
-      min-height: 130px;
-    }
-    .feat h3{margin:0 0 6px; font-size:15px}
-    .feat p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.55}
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--brand2), #6be7ff);
-      display:inline-block; margin-right:10px; box-shadow: 0 10px 18px rgba(46,229,157,.18);
-    }
+/* Conteúdo */
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
 
-    /* Plano */
-    .plan{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:14px;
-    }
-    @media (max-width: 900px){ .plan{grid-template-columns:1fr;} }
-    .plan .box{
-      padding:18px;
-      border-radius: 18px;
-      border:1px solid var(--line);
-      background: rgba(17,24,49,.45);
-    }
-    .list{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:10px;}
-    .li{
-      display:flex; gap:10px; align-items:flex-start;
-      color: rgba(255,255,255,.88);
-      font-size: 13.5px;
-      line-height:1.45;
-    }
-    .check{
-      width:20px; height:20px; flex:0 0 20px;
-      border-radius: 6px;
-      background: rgba(46,229,157,.18);
-      border: 1px solid rgba(46,229,157,.28);
-      display:grid; place-items:center;
-      margin-top: 1px;
-    }
-    .check svg{width:14px; height:14px}
-    .muted{color:var(--muted)}
-    .footer{
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: rgba(255,255,255,.65);
-      font-size: 12.5px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-    }
+.card{
+  background:white;
+  border-radius:15px;
+  padding:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  margin-top:-40px;
+}
 
-    /* Modal */
-    .overlay{
-      position:fixed; inset:0;
-      background: rgba(0,0,0,.55);
-      display:none;
-      align-items:center; justify-content:center;
-      padding:18px;
-      z-index:50;
-    }
-    .modal{
-      width:min(560px, 100%);
-      background: rgba(17,24,49,.95);
-      border:1px solid var(--line);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .modal header{
-      padding:16px 16px 10px;
-      border-bottom:1px solid var(--line);
-      display:flex; justify-content:space-between; align-items:center; gap:10px;
-    }
-    .modal h2{margin:0; font-size:16px}
-    .x{
-      background: rgba(255,255,255,.08);
-      border:1px solid var(--line);
-      width:36px; height:36px;
-      border-radius: 12px;
-      display:grid; place-items:center;
-      cursor:pointer;
-      color: rgba(255,255,255,.85);
-      font-weight:900;
-    }
-    .modal .body{padding:16px}
-    .field{display:grid; gap:6px; margin-bottom:12px;}
-    label{font-size:12px; color: rgba(255,255,255,.78); font-weight:700}
-    input{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      outline:none;
-    }
-    input:focus{border-color: rgba(124,92,255,.55)}
-    .row{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-    @media (max-width: 520px){ .row{grid-template-columns:1fr;} }
-    .hint{font-size:12px; color: rgba(255,255,255,.65); margin-top:6px; line-height:1.45}
-    .ok{
-      background: linear-gradient(135deg, var(--brand2), #6be7ff);
-      color:#07121a;
-      font-weight:900;
-      width:100%;
-      justify-content:center;
-    }
-    .success{
-      display:none;
-      margin-top:12px;
-      padding:12px 12px;
-      border-radius: 14px;
-      background: rgba(46,229,157,.14);
-      border: 1px solid rgba(46,229,157,.25);
-      color: rgba(240,255,249,.95);
-      font-size: 13px;
-      line-height:1.45;
-    }
-  </style>
+/* Preço */
+.preco{
+  font-size:36px;
+  color:#6a5cff;
+  font-weight:bold;
+}
+
+small{
+  color:#777;
+}
+
+/* Lista */
+ul{
+  padding-left:20px;
+}
+li{
+  margin:10px 0;
+}
+
+/* Botão */
+.botao{
+  display:block;
+  width:100%;
+  text-align:center;
+  background:#25d366;
+  color:white;
+  text-decoration:none;
+  padding:15px;
+  border-radius:10px;
+  font-size:18px;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+.botao:hover{
+  background:#1ebe5d;
+}
+
+/* Rodapé */
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:14px;
+  color:#777;
+}
+</style>
 </head>
+
 <body>
-  <div class="wrap">
 
-    <div class="topbar">
-      <div class="logo">
-        <span class="pill">✨</span>
-        <div>Patraonara</div>
-        <span class="pill">R$ 18/mês</span>
-      </div>
+<header>
+  <div class="mascote">🤍🦦</div>
+  <h1>Patraonara</h1>
+  <p>Seu clube de apoio mensal com um furão fofo 🦦</p>
+</header>
 
-      <div class="cta-mini">
-        <a class="btn btn-ghost" href="#beneficios">Ver benefícios</a>
-        <a class="btn btn-primary" href="#inscrever" id="btnTopo">Quero assinar</a>
-      </div>
-    </div>
+<div class="container">
+  <div class="card">
+    <h2>Plano Mensal</h2>
+    <p class="preco">R$ 18,00 <small>/ mês</small></p>
 
-    <section class="hero" id="inicio">
-      <div class="card">
-        <div class="card-inner">
-          <div class="badge">🚀 Inscrição aberta • Acesso imediato</div>
-          <h1 class="title">Assine por <span style="color:var(--brand2)">R$ 18</span>/mês e ganhe benefícios exclusivos.</h1>
-          <p class="subtitle">
-            Uma página simples, bonita e rápida. Você pode personalizar depois (textos, cores, links).
-            Cancelamento a qualquer momento.
-          </p>
+    <p>Ao assinar, você apoia o projeto e recebe acesso a conteúdos exclusivos.</p>
 
-          <div class="price">
-            <strong>R$ 18</strong>
-            <span>/ mês • recorrente</span>
-          </div>
+    <ul>
+      <li>✅ Conteúdos exclusivos</li>
+      <li>✅ Apoio direto ao criador</li>
+      <li>✅ Comunidade especial</li>
+      <li>✅ Cancelamento quando quiser</li>
+    </ul>
 
-          <div class="hero-actions" id="inscrever">
-            <button class="btn btn-primary" id="abrirModal">Fazer inscrição</button>
-            <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
-          </div>
-
-          <div class="fine">⚠️ Observação: este site não cobra de verdade sozinho. Ele apenas coleta os dados do formulário (simulação). Se você quiser cobrar de verdade, eu te ajudo a integrar Pix/Stripe/Mercado Pago.</div>
-        </div>
-      </div>
-
-      <aside class="mascot">
-        <div class="pad">
-          <div class="mascot-top">
-            <div class="tag">🐾 Mascote oficial</div>
-            <div class="pill">Furão branco fofo</div>
-          </div>
-
-          <div class="bubble">
-            “Oi! Eu sou o <strong>Furãozinho</strong> 🥹🤍  
-            Vou te acompanhar na assinatura e lembrar que você pode cancelar quando quiser.”
-          </div>
-
-          <div class="ferret" aria-label="Mascote furão branco fofo">
-            <span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span>
-
-            <!-- SVG do furão (estilizado e fofo) -->
-            <svg viewBox="0 0 520 360" role="img" aria-label="Furão branco fofo">
-              <defs>
-                <linearGradient id="fur" x1="0" x2="1">
-                  <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
-                  <stop offset="1" stop-color="#dfe7ff" stop-opacity="0.95"/>
-                </linearGradient>
-                <linearGradient id="fur2" x1="0" x2="1">
-                  <stop offset="0" stop-color="#fff7f7" stop-opacity="0.95"/>
-                  <stop offset="1" stop-color="#e9f1ff" stop-opacity="0.95"/>
-                </linearGradient>
-                <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
-                  <feColorMatrix in="blur" type="matrix"
-                    values="0 0 0 0 0
-                            0 0 0 0 0
-                            0 0 0 0 0
-                            0 0 0 .35 0" result="shadow"/>
-                  <feMerge>
-                    <feMergeNode in="shadow"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-
-              <!-- sombra -->
-              <ellipse cx="270" cy="300" rx="150" ry="34" fill="rgba(0,0,0,.35)"/>
-
-              <!-- corpo -->
-              <path filter="url(#soft)"
-                d="M120,210
-                   C105,165 140,120 205,112
-                   C255,106 290,126 325,146
-                   C372,173 420,176 448,206
-                   C476,236 465,276 430,290
-                   C390,307 355,298 318,278
-                   C292,264 268,256 240,258
-                   C198,261 140,252 120,210 Z"
-                fill="url(#fur)"/>
-
-              <!-- barriga -->
-              <path
-                d="M164,204
-                   C154,172 180,140 222,136
-                   C258,133 282,148 306,160
-                   C338,176 372,178 392,198
-                   C413,218 403,248 378,258
-                   C350,270 321,262 292,246
-                   C270,234 250,228 226,230
-                   C198,232 176,224 164,204 Z"
-                fill="url(#fur2)" opacity=".85"/>
-
-              <!-- cabeça -->
-              <path filter="url(#soft)"
-                d="M136,182
-                   C110,156 112,120 142,98
-                   C176,72 226,86 244,118
-                   C262,150 242,188 206,200
-                   C178,209 156,200 136,182 Z"
-                fill="url(#fur)"/>
-
-              <!-- orelhas -->
-              <path d="M160,108 C150,92 166,78 184,84 C176,98 170,108 160,108 Z" fill="#ffe9ef" opacity=".9"/>
-              <path d="M198,104 C196,88 218,82 232,94 C218,104 210,110 198,104 Z" fill="#ffe9ef" opacity=".9"/>
-
-              <!-- máscara (furão) -->
-              <path
-                d="M136,156
-                   C156,132 194,126 222,140
-                   C238,148 244,166 236,180
-                   C224,200 190,206 164,192
-                   C150,185 140,172 136,156 Z"
-                fill="rgba(18,24,43,.22)"/>
-
-              <!-- olhos -->
-              <circle cx="178" cy="164" r="9" fill="#101827"/>
-              <circle cx="210" cy="162" r="9" fill="#101827"/>
-              <circle cx="175" cy="160" r="3" fill="#ffffff" opacity=".9"/>
-              <circle cx="207" cy="158" r="3" fill="#ffffff" opacity=".9"/>
-
-              <!-- nariz -->
-              <path d="M190,182 C182,180 182,190 190,192 C198,190 198,180 190,182 Z" fill="#ff7aa0" opacity=".95"/>
-              <!-- boca -->
-              <path d="M190,193 C184,202 174,204 168,202" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linecap="round" fill="none"/>
-              <path d="M190,193 C196,202 206,204 212,202" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linecap="round" fill="none"/>
-
-              <!-- cauda -->
-              <path filter="url(#soft)"
-                d="M418,220
-                   C468,216 500,252 486,282
-                   C472,312 424,318 392,300
-                   C410,286 424,270 418,220 Z"
-                fill="url(#fur)"/>
-
-              <!-- brilhinhos -->
-              <circle cx="120" cy="110" r="4" fill="rgba(255,255,255,.75)"/>
-              <circle cx="440" cy="120" r="3" fill="rgba(255,255,255,.55)"/>
-              <circle cx="390" cy="88" r="2.5" fill="rgba(255,255,255,.45)"/>
-            </svg>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="card" id="beneficios" style="margin-top:16px;">
-      <div class="card-inner">
-        <h2 style="margin:0 0 6px; font-size:18px;">Benefícios da assinatura</h2>
-        <p class="subtitle" style="margin:0 0 10px;">
-          Tudo pensado para você receber valor todo mês por um preço acessível.
-        </p>
-
-        <div class="grid">
-          <div class="feat">
-            <h3><span class="dot"></span>Conteúdo exclusivo</h3>
-            <p>Posts, novidades e materiais extras liberados para assinantes.</p>
-          </div>
-          <div class="feat">
-            <h3><span class="dot"></span>Comunidade</h3>
-            <p>Acesso a grupo/área de membros para trocar ideias e receber avisos.</p>
-          </div>
-          <div class="feat">
-            <h3><span class="dot"></span>Prioridade</h3>
-            <p>Atendimento e respostas com prioridade para quem é inscrito.</p>
-          </div>
-        </div>
-
-        <div class="plan" id="como-funciona">
-          <div class="box">
-            <h3 style="margin:0 0 6px;">Como funciona</h3>
-            <p class="muted" style="margin:0;">Você se inscreve, recebe confirmação e tem acesso imediato aos benefícios.</p>
-            <ul class="list">
-              <li class="li">
-                <span class="check" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path fill="currentColor" d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
-                </span>
-                Preenche seus dados e confirma a inscrição.
-              </li>
-              <li class="li">
-                <span class="check" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path fill="currentColor" d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
-                </span>
-                Recebe instruções por WhatsApp/e-mail (quando você configurar).
-              </li>
-              <li class="li">
-                <span class="check" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path fill="currentColor" d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
-                </span>
-                Acesso liberado e você aproveita todo mês.
-              </li>
-            </ul>
-          </div>
-
-          <div class="box">
-            <h3 style="margin:0 0 6px;">Plano Mensal</h3>
-            <p class="muted" style="margin:0;">R$ 18/mês • recorrente • cancele quando quiser</p>
-            <div class="price" style="margin-top:12px;">
-              <strong>R$ 18</strong>
-              <span>/ mês</span>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-              <button class="btn btn-primary" id="abrirModal2">Assinar agora</button>
-              <a class="btn btn-ghost" href="#inicio">Voltar ao topo</a>
-            </div>
-            <div class="fine">* Para cobrar de verdade, você pode integrar Pix/Stripe/Mercado Pago. Eu te ajudo quando você quiser.</div>
-          </div>
-        </div>
-
-        <div class="footer">
-          <div>© <span id="ano"></span> Patraonara. Todos os direitos reservados.</div>
-          <div class="muted">Feito com GitHub Pages</div>
-        </div>
-      </div>
-    </section>
-
+    <a class="botao"
+       href="https://wa.me/5516981900804?text=Olá!%20Quero%20fazer%20a%20assinatura%20de%20R$%2018,00%20por%20mês%20no%20Patraonara."
+       target="_blank">
+       👉 Fazer inscrição pelo WhatsApp
+    </a>
   </div>
+</div>
 
-  <!-- MODAL INSCRIÇÃO -->
-  <div class="overlay" id="overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-label="Formulário de inscrição">
-      <header>
-        <h2>Inscrição — R$ 18/mês</h2>
-        <button class="x" id="fecharModal" aria-label="Fechar">✕</button>
-      </header>
-      <div class="body">
-        <p class="muted" style="margin:0 0 12px; font-size:13px; line-height:1.45;">
-          Preencha seus dados. (Simulação — não cobra automaticamente.)
-        </p>
+<footer>
+  © 2026 Patraonara • Feito com 🤍 e um furão fofo 🦦
+</footer>
 
-        <div class="field">
-          <label for="nome">Nome</label>
-          <input id="nome" placeholder="Seu nome completo" autocomplete="name" />
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="email">E-mail</label>
-            <input id="email" placeholder="seuemail@email.com" autocomplete="email" inputmode="email" />
-          </div>
-          <div class="field">
-            <label for="whats">WhatsApp</label>
-            <input id="whats" placeholder="(DDD) 9XXXX-XXXX" inputmode="tel" />
-          </div>
-        </div>
-
-        <button class="btn ok" id="confirmar">Confirmar inscrição</button>
-        <div class="hint">Dica: depois posso colocar um botão que manda direto para seu WhatsApp com a mensagem pronta.</div>
-
-        <div class="success" id="success">
-          ✅ Inscrição registrada! Agora personalize a cobrança (Pix/Stripe/Mercado Pago) quando quiser.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const overlay = document.getElementById('overlay');
-    const abrirModal = document.getElementById('abrirModal');
-    const abrirModal2 = document.getElementById('abrirModal2');
-    const fecharModal = document.getElementById('fecharModal');
-    const confirmar = document.getElementById('confirmar');
-    const success = document.getElementById('success');
-
-    function openModal(){
-      overlay.style.display = 'flex';
-      overlay.setAttribute('aria-hidden','false');
-      success.style.display = 'none';
-      setTimeout(()=> document.getElementById('nome').focus(), 50);
-    }
-    function closeModal(){
-      overlay.style.display = 'none';
-      overlay.setAttribute('aria-hidden','true');
-    }
-
-    abrirModal?.addEventListener('click', openModal);
-    abrirModal2?.addEventListener('click', openModal);
-    fecharModal?.addEventListener('click', closeModal);
-
-    overlay.addEventListener('click', (e)=>{
-      if(e.target === overlay) closeModal();
-    });
-
-    confirmar.addEventListener('click', ()=>{
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
-
-      if(!nome || !email){
-        alert('Preencha pelo menos Nome e E-mail.');
-        return;
-      }
-      success.style.display = 'block';
-    });
-
-    document.getElementById('ano').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
